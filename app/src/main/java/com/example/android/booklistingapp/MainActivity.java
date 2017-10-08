@@ -23,9 +23,11 @@ public class MainActivity extends AppCompatActivity
 
     private SearchView searchView;
 
+    /** URL for a search on a given topic by user from the Google Books API dataset */
     private String searchUrl;
-
-    private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=android";
+    
+    /** URL for book list data from the Google Books API dataset */
+    private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     private List<Books> books = new ArrayList<>();
 
@@ -39,10 +41,6 @@ public class MainActivity extends AppCompatActivity
 
     /** Tag for log messages */
     private static final String LOG_TAG = MainActivity.class.getName();
-
-//    /** URL for book list data from the Google Books API dataset */
-//    private static final String BOOKS_REQUEST_URL =
-//            "https://www.googleapis.com/books/v1/volumes?q=android&maxResults=20";
 
     /** Adapter for the list of books */
     private BooksAdapter booksAdapter;
@@ -144,12 +142,6 @@ public class MainActivity extends AppCompatActivity
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
-//        // Set empty state text to display "No books found."
-//        mEmptyStateTextView.setText(getString(R.string.no_books));
-
-//        // Clear the adapter of previous books data
-//        booksAdapter.setBooksList(null);
-
         // If there is a valid list of {@link Books}, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (result != null && !result.isEmpty()) {
@@ -160,19 +152,6 @@ public class MainActivity extends AppCompatActivity
             mEmptyStateTextView.setText(getString(R.string.no_books));
         }
     }
-
-//    @Override
-//    public void onLoadFinished(Loader<List<Book>> loader, List<Book> newBookList) {
-//        progressBar.setVisibility(View.GONE);
-//        bookAdapter.setBookList(null);
-//
-//        if (newBookList != null && !newBookList.isEmpty()) {
-//            bookAdapter.setBookList(newBookList);
-//            bookAdapter.notifyDataSetChanged();
-//        } else {
-//            emptyStateTextView.setText(getString(R.string.no_books_message, keywords));
-//        }
-//    }
 
     @Override
     public void onLoaderReset(Loader<List<Books>> loader) {
