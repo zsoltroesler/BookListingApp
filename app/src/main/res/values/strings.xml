@@ -1,9 +1,26 @@
 <resources>
+    <!-- App name -->
     <string name="app_name">Book Listing App</string>
 
-    <!-- Text to display in the list when there are no books [CHAR LIMIT=NONE] -->
+    <!-- Text to display in ActionBar for new search -->
+    <string name="list_of_books">List of books</string>
+
+    <!-- EditText question -->
+    <string name="question">What are you looking for?</string>
+
+    <!-- Search text -->
+    <string name="search">SEARCH</string>
+
+    <!-- Text to display if the user press the search button without search criterion -->
+    <string name="search_criterion">Please enter search criterion like title, author or theme!</string>
+
+    <!-- Welcome quote on activity_main.xml layout -->
+    <string name="welcome_quote">Reading gives us someplace to go when we have to stay where we are.
+        - Mason Cooley</string>
+
+    <!-- Text to display in the list when there are no books -->
     <string name="no_books">No books found.</string>
 
-    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <!-- Error message when there is no internet connectivity -->
     <string name="no_internet_connection">No internet connection.</string>
 </resources>

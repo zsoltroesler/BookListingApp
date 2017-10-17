@@ -9,63 +9,45 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp">
+        android:layout_height="@dimen/cover_photo_height">
 
         <!-- Photo by Beatriz Pérez Moya on Unsplash -->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/cover_photo"/>
+            android:src="@drawable/cover_photo" />
 
         <TextView
             android:id="@+id/textview_app_name"
+            style="@style/TextViewAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:text="Book Listing App"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textStyle="normal"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"/>
+            android:text="@string/app_name" />
 
-        <SearchView
-            android:id="@+id/searchview_view"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textview_quote"
+            style="@style/TextViewQuote"
+            android:layout_width="@dimen/quote_width"
             android:layout_height="wrap_content"
-            android:maxWidth="230dp"
-            android:iconifiedByDefault="false"
-            android:layout_below="@+id/textview_app_name"
-            android:paddingTop="5dp"
-            android:queryHint="Search for Books"/>
+            android:text="@string/welcome_quote" />
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <EditText
+        android:id="@+id/edittext_query"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_list"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <!-- Empty view is only visible when the list has no items. -->
-    <TextView
-        android:id="@+id/textview_empty"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textAppearance="?android:textAppearanceMedium"/>
+        android:hint="@string/question" />
 
-    <ProgressBar
-        android:id="@+id/loading_indicator"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
-</RelativeLayout>
+    <Button
+        android:id="@+id/button_search"
+        style="@style/ButtonStyle"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:drawableLeft="@drawable/ic_search"
+        android:text="@string/search"/>
 
 </LinearLayout>
 

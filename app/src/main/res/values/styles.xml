@@ -1,10 +1,79 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@android:color/background_dark</item>
+        <item name="colorPrimary">#5f6163</item>
         <item name="colorPrimaryDark">@android:color/background_dark</item>
         <item name="colorAccent">@android:color/darker_gray</item>
+    </style>
+
+    <!-- Base application theme with actionbar. -->
+    <style name="BookListTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#5f6163</item>
+        <item name="colorPrimaryDark">@android:color/background_dark</item>
+        <item name="colorAccent">@android:color/darker_gray</item>
+    </style>
+
+    <!-- App name style from activity_main.xml. -->
+    <style name="TextViewAppName">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_marginTop">@dimen/dimen_25dp</item>
+        <item name="android:layout_marginStart">@dimen/dimen_5dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/text_size_25sp</item>
+    </style>
+
+    <!-- Quote style from activity_main.xml. -->
+    <style name="TextViewQuote">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginStart">@dimen/dimen_5dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">@dimen/text_size_15sp</item>
+    </style>
+
+    <!-- EditText style from activity_main.xml. -->
+    <style name="EditTextStyle">
+        <item name="android:layout_marginTop">@dimen/dimen_40dp</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_40dp</item>
+        <item name="android:layout_marginRight">@dimen/dimen_40dp</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Button style from activity_main.xml. -->
+    <style name="ButtonStyle">
+        <item name="android:theme">?android:attr/selectableItemBackground</item>
+        <item name="android:layout_marginTop">@dimen/dimen_20dp</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:text">search</item>
+    </style>
+
+    <!-- Empty TextView style from activity_main.xml. -->
+    <style name="TextViewEmpty">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:padding">@dimen/dimen_35dp</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+    </style>
+
+    <!-- Title TextView style from list_item.xml. -->
+    <style name="TextViewTitle">
+        <item name="android:ellipsize">end</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+    </style>
+
+    <!-- Author TextView style from list_item.xml. -->
+    <style name="TextViewAuthor">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/author_text_size</item>
     </style>
 
 </resources>

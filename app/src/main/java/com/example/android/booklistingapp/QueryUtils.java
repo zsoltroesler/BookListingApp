@@ -44,13 +44,6 @@ public final class QueryUtils {
     public static List<Books> fetchBooksData(String requestUrl) {
         Log.i(LOG_TAG, "TEST: fetchBooksData() called...");
 
-//        // Force the background thread to sleep for 2 seconds
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -155,18 +148,18 @@ public final class QueryUtils {
             return null;
         }
 
-        // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
+        // Try to parse the JSOn response. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
             // Create a JSONObject from the booksJSON
             JSONObject baseJsonResponse = new JSONObject(booksJSON);
-            // Extract the JSONArray associated with the key called "items",
-            // which represents a list of items (or books).
-            JSONArray booksArray = baseJsonResponse.getJSONArray("items");
 
-            // If there are results in the features array
-            if (booksArray.length() > 0) {
+            // If there are results in the items array
+            if (baseJsonResponse.has("items")) {
+                // Extract the JSONArray associated with the key called "items",
+                // which represents a list of items (or books).
+                JSONArray booksArray = baseJsonResponse.getJSONArray("items");
                 // For each book in the booksArray, create a {@link Books} object
                 for (int i = 0; i < booksArray.length(); i++) {
 
@@ -177,17 +170,12 @@ public final class QueryUtils {
                     // key called "volumeInfo", which represents all the data of a book
                     JSONObject volumeInfo = currentBook.getJSONObject("volumeInfo");
 
-                    // For a given book image, extract the JSONObject associated with the
-                    // key called "imageLinks", which represents URLs as source links
-                    JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-
                     // Extract the value for the key called "title"
                     String title = volumeInfo.getString("title");
 
+                    // Create an ArrayList for authors
                     List<String> authorList = new ArrayList<>();
-
-                    String urlImage = "";
-
+                    // If the book has more than one authors than add to the ArrayList
                     if (volumeInfo.has("authors")) {
                         JSONArray authors = volumeInfo.getJSONArray("authors");
                         for (int j = 0; j < authors.length(); j++) {
@@ -198,21 +186,27 @@ public final class QueryUtils {
                     // Extract the value for the key called "infoLink"
                     String urlBook = volumeInfo.getString("infoLink");
 
+                    // For a given book image, extract the JSONObject associated with the
+                    // key called "imageLinks", which represents URLs as source links
+                    JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
+
+                    // Create a String for image book URL
+                    String urlImage = "";
+
                     // Get value for smallThumbnail if the key exists
                     if (volumeInfo.has("imageLinks")) {
-                        urlImage = imageLinks.getString("smallThumbnail");
-                        } else {
-                            urlImage = "";
+                        if (imageLinks.has("smallThumbnail")) {
+                            urlImage = imageLinks.getString("smallThumbnail");
                         }
-
-//                    // Extract the value for the key called "thumbnail"
-//                    String urlImage = imageLinks.getString("thumbnail");
+                    }  else {
+                        urlImage = "";
+                    }
 
                     // Create a new {@link Books} object with the title, authors, url for image
                     // and url for info from the JSON response.
                     Books book = new Books(title, authorList, urlImage, urlBook);
 
-                    // Add the new {@link EBooks} to the list of books.
+                    // Add the new {@link Books} to the list of books.
                     books.add(book);
                 }
             }

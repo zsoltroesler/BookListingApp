@@ -35,12 +35,11 @@ public class BooksLoader extends AsyncTaskLoader<List<Books>> {
         forceLoad();
     }
 
-    /**
-     * This is on a background thread.
-     */
+    // This is on a background thread.
     @Override
     public List<Books> loadInBackground() {
         Log.i(LOG_TAG, "TEST: loadInBackground() called...");
+
         // Don't perform the request if there are no URLs, or the first URL is null.
         if (mUrl == null) {
             return null;

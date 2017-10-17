@@ -81,18 +81,15 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
 
         // Set Image if available
         image = currentBook.getUrlImage();
-        if (image != null || image.length() > 0) {
+        if (image != null && image.length() > 0) {
             Picasso.with(context).load(currentBook.getUrlImage()).into(holder.urlImageView);
         } else {
             Picasso.with(context).load(R.drawable.no_cover_thumb).into(holder.urlImageView);
         }
 
-        // Set Image if available
+        // Get the image resource URL from the current Books object and set this on the
+        // image ImageView
         Picasso.with(context).load(currentBook.getUrlImage()).into(holder.urlImageView);
-
-//        // Get the image resource URL from the current Books object and set this on the
-//        // image ImageView
-//        holder.urlImageView.setImageURI(Uri.parse(currentBook.getUrlImage()));
 
         // Attach an OnClickListener to open a current Book specific URL
         holder.parentView.setOnClickListener(new View.OnClickListener() {
@@ -117,8 +114,20 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         return this.books.size();
     }
 
+    // Helper method to set new books list or clear the previous one
     public void setBooksList(List<Books> books){
         this.books = books;
         this.notifyDataSetChanged();
     }
+
+//    // Helper method to clear the previous books list (not in use)
+//    public void clearBookList() {
+//        int size = this.books.size();
+//        if (size > 0) {
+//            for (int i = 0; i < size; i++) {
+//                this.books.remove(0);
+//            }
+//            this.notifyItemRangeRemoved(0, size);
+//        }
+//    }
 }
