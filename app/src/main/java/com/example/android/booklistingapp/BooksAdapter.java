@@ -27,7 +27,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
      * Create a new {@link BooksAdapter} object.
      *
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
-     * @param books   is the fragment_items_list of {@link Books}s to be displayed.
+     * @param books   is the items_list of {@link Books}s to be displayed.
      */
     public BooksAdapter(Context context, List<Books> books) {
         this.context = context;
@@ -117,7 +117,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
     // Helper method to set new books list or clear the previous one
     public void setBooksList(List<Books> books){
         this.books = books;
-        this.notifyDataSetChanged();
     }
 
 //    // Helper method to clear the previous books list (not in use)
